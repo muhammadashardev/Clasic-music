@@ -29,17 +29,16 @@ export default function Hero({
         <img
           src="/orchestra-bg.jpg"
           alt="The Grand Symphony Orchestra & Conductor"
-          className="h-full w-full object-cover object-center scale-[1.02] filter brightness-[0.88] contrast-[1.06]"
+          className="h-full w-full object-cover object-center scale-[1.02] "
         />
 
         {/* Sophisticated Vignette & Atmospheric Gradients */}
         {/* Left deep shadow for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#070605] via-[#070605]/80 via-40% to-transparent" />
 
         {/* Top shadow for navigation */}
 
         {/* Bottom shadow for bottom cards */}
-        <div className="absolute bottom-0 inset-x-0 h-72 bg-gradient-to-t from-[#070605] via-[#070605]/75 to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-72 bg-gradient-to-t from-[#070605] via-[#070605]/10 to-transparent" />
 
         {/* Radial amber glow around chandelier / conductor */}
       </div>
@@ -155,10 +154,7 @@ export default function Hero({
           </div>
 
           {/* Right Floating Content: Watch The Trailer Play Button */}
-          <div className="self-end lg:self-center lg:mr-12 xl:mr-24 pt-4 lg:pt-0">
-            <TrailerButton onClick={onOpenTrailer} />
-          </div>
-
+         
         </div>
 
         {/* 4. Bottom Row: Event Card (Left), Scroll Indicator (Center), Quote Card (Right) */}

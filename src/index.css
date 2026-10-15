@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-cinzel: 'Cinzel', serif;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #070605;
+    color: #F4EFE6;
+    overflow-x: hidden;
+  }
+}
+
+/* Luxury font utilities */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-serif-luxury {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans-clean {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Gold Gradient Text */
+.gold-text-gradient {
+  background: linear-gradient(120deg, #FFF4D2 0%, #F3D278 25%, #D4A538 55%, #AA7B1E 80%, #ECC56B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.gold-subtle-gradient {
+  background: linear-gradient(135deg, #EAD7B2 0%, #D1A858 50%, #9B7728 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Luxury Gold Button */
+.btn-gold-primary {
+  background: linear-gradient(135deg, #F5D37E 0%, #DFAB42 45%, #C28E25 100%);
+  color: #120e06;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(223, 171, 66, 0.35), 0 0 40px rgba(223, 171, 66, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-gold-primary:hover {
+  background: linear-gradient(135deg, #FBE09A 0%, #EAB94F 45%, #CE9930 100%);
+  box-shadow: 0 6px 28px rgba(223, 171, 66, 0.55), 0 0 50px rgba(223, 171, 66, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Glassmorphism Luxury Card */
+.glass-gold-card {
+  background: rgba(14, 11, 9, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.glass-gold-card:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080706;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a241b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4a538;
+}
+
+/* Shimmer & Golden Wave Keyframes */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(245, 211, 126, 0.15) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 6s infinite;
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 4s ease-in-out infinite;
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float-gentle {
+  animation: floatGentle 5s ease-in-out infinite;
+}

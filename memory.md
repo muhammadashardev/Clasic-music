@@ -1,0 +1,1 @@
+ache yar mere desng apnekrna hai react js and tailwind css mein krna ahai design ok all sections responsive ho ok or mock data alg fodler bnakr us mein rkha ahai ok css us enhi krni tailwind css hi use krni ok design ok 

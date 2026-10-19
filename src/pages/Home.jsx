@@ -15,7 +15,7 @@ import SponsorshipModal from '../components/SponsorshipModal';
 import AudioPlayerWidget from '../components/AudioPlayerWidget';
 import { upcomingEvents } from '../data/mockData';
 
-export default function Home() {
+export default function Home({ onNavigate }) {
   const [currentHeroEventIndex, setCurrentHeroEventIndex] = useState(0);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isTrailerOpen, setIsTrailerOpen] = useState(false);
@@ -66,56 +66,73 @@ export default function Home() {
     <div className="relative min-h-screen w-full bg-[#070605] text-[#F4EFE6] selection:bg-[#E5B842]/30 selection:text-white">
       {/* 1. Master Navigation Bar */}
       <Navbar
+        currentPage="home"
+        onNavigate={onNavigate}
         onOpenBooking={() => handleOpenBooking(upcomingEvents[currentHeroEventIndex])}
         onOpenStory={() => setIsStoryOpen(true)}
       />
 
       {/* Main Orchestral Experience */}
       <main>
-        {/* Section 1: Hero Section (The Conductor & "Where Music Becomes Timeless") */}
-        <Hero
-          events={upcomingEvents}
-          currentEventIndex={currentHeroEventIndex}
-          onPrevEvent={handlePrevHeroEvent}
-          onNextEvent={handleNextHeroEvent}
-          onSelectEvent={handleSelectHeroEvent}
-          onOpenBooking={() => handleOpenBooking(upcomingEvents[currentHeroEventIndex])}
-          onOpenTrailer={() => setIsTrailerOpen(true)}
-          onOpenStory={() => setIsStoryOpen(true)}
-        />
+        {/* Section 1: Hero Section */}
+        <section id="hero-section">
+          <Hero
+            events={upcomingEvents}
+            currentEventIndex={currentHeroEventIndex}
+            onPrevEvent={handlePrevHeroEvent}
+            onNextEvent={handleNextHeroEvent}
+            onSelectEvent={handleSelectHeroEvent}
+            onOpenBooking={() => handleOpenBooking(upcomingEvents[currentHeroEventIndex])}
+            onOpenTrailer={() => setIsTrailerOpen(true)}
+            onOpenStory={() => setIsStoryOpen(true)}
+          />
+        </section>
 
-        {/* Section 2: Musical Legacy Section (The Violinist & "A Tradition of Excellence") */}
-        <MusicalLegacy
-          onExploreMore={() => setIsStoryOpen(true)}
-        />
+        {/* Section 2: Musical Legacy / About */}
+        <section id="about-section">
+          <MusicalLegacy
+            onExploreMore={() => setIsStoryOpen(true)}
+          />
+        </section>
 
-        {/* Section 3: Upcoming Performances ("Moments Worth Listening To" Carousel) */}
-        <UpcomingPerformances
-          onSelectPerformance={(perf) => handleOpenBooking(perf)}
-          onViewAll={() => handleOpenBooking(null)}
-        />
+        {/* Section 3: Upcoming Performances / Concerts */}
+        <section id="events-section">
+          <UpcomingPerformances
+            onSelectPerformance={(perf) => handleOpenBooking(perf)}
+            onViewAll={() => handleOpenBooking(null)}
+          />
+        </section>
 
-        {/* Section 4: Featured Performance ("A Performance to Remember" & Fluid Portal) */}
-        <FeaturedPerformance
-          onWatchPerformances={() => setIsTrailerOpen(true)}
-          onOpenGallery={() => setIsGalleryOpen(true)}
-        />
+        {/* Section 4: Featured Performance / Artists */}
+        <section id="artists-section">
+          <FeaturedPerformance
+            onWatchPerformances={() => setIsTrailerOpen(true)}
+            onOpenGallery={() => setIsGalleryOpen(true)}
+          />
+        </section>
 
-        {/* Section 5: Support & Community ("Keep The Music Alive") */}
-        <SupportCommunity
-          onSupportMission={handleOpenSponsorship}
-          onWatchImpact={() => setIsTrailerOpen(true)}
-        />
+        {/* Section 5: Support & Community */}
+        <section id="community-section">
+          <SupportCommunity
+            onSupportMission={handleOpenSponsorship}
+            onWatchImpact={() => setIsTrailerOpen(true)}
+          />
+        </section>
 
-        {/* Section 6: Newsletter ("Stay In Harmony") */}
-        <Newsletter />
+        {/* Section 6: Newsletter / Contact */}
+        <section id="contact-section">
+          <Newsletter />
+        </section>
 
         {/* Master Interactive Orchestral Footer */}
-        <Footer
-          onOpenBooking={() => handleOpenBooking(null)}
-          onOpenStory={() => setIsStoryOpen(true)}
-          onOpenSponsor={() => handleOpenSponsorship(null)}
-        />
+        <div id="footer-section">
+          <Footer
+            onNavigate={onNavigate}
+            onOpenBooking={() => handleOpenBooking(null)}
+            onOpenStory={() => setIsStoryOpen(true)}
+            onOpenSponsor={() => handleOpenSponsorship(null)}
+          />
+        </div>
       </main>
 
       {/* Floating Symphony Live Audio Synthesizer Widget */}

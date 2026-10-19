@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { footerData } from '../data/mockData';
 
-export default function Footer({ onOpenBooking, onOpenStory, onOpenSponsor }) {
+export default function Footer({ onOpenBooking, onOpenStory, onOpenSponsor, onNavigate }) {
   const [activeVenueIdx, setActiveVenueIdx] = useState(0);
   const activeVenue = footerData.venues[activeVenueIdx];
 
@@ -22,12 +22,24 @@ export default function Footer({ onOpenBooking, onOpenStory, onOpenSponsor }) {
   };
 
   const handleLinkClick = (action) => {
-    if (action === 'events' || action === 'booking' || action.startsWith('event-')) {
-      onOpenBooking();
+    if (action === 'events' || action === 'calendar') {
+      if (onNavigate) onNavigate('events');
+      else window.location.hash = '#events';
+    } else if (action === 'about' || action === 'legacy' || action === 'directors') {
+      if (onNavigate) onNavigate('about');
+      else window.location.hash = '#about';
+    } else if (action === 'artists' || action === 'orchestra') {
+      if (onNavigate) onNavigate('artists');
+      else window.location.hash = '#artists';
+    } else if (action === 'gallery' || action === 'media') {
+      if (onNavigate) onNavigate('gallery');
+      else window.location.hash = '#gallery';
+    } else if (action === 'booking' || action.startsWith('event-')) {
+      if (onOpenBooking) onOpenBooking();
     } else if (action === 'sponsor' || action === 'endow' || action === 'academy') {
-      onOpenSponsor();
+      if (onOpenSponsor) onOpenSponsor();
     } else {
-      onOpenStory();
+      if (onOpenStory) onOpenStory();
     }
   };
 
